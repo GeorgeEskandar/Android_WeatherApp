@@ -63,10 +63,8 @@ public class BluetoothLeService extends Service {
     public final static String EXTRA_DATA =
             "com.example.bluetooth.le.EXTRA_DATA";
 
-    public final static UUID UUID_TEMPERATURE_MEASUREMENT =
-            UUID.fromString(SampleGattAttributes.TEMPERATURE_MEASUREMENT);
-    public final static UUID UUID_HUMIDITY_MEASUREMENT =
-            UUID.fromString(SampleGattAttributes.HUMIDITY_MEASUREMENT);
+    public final static UUID UUID_INTENSITY =
+            UUID.fromString(SampleGattAttributes.INTENSITY);
 
     // Implements callback methods for GATT events that the app cares about.  For example,
     // connection change and services discovered.
@@ -125,21 +123,11 @@ public class BluetoothLeService extends Service {
                                  final BluetoothGattCharacteristic characteristic) {
         final Intent intent = new Intent(action);
 
-        // This is special handling for the Heart Rate Measurement profile.  Data parsing is
-        // carried out as per profile specifications:
-        // http://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml
-        if (UUID_TEMPERATURE_MEASUREMENT.equals(characteristic.getUuid())) {
-            Integer lowerByte = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT8, 1);
-            Integer upperByte = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT8, 2);
-            int t = (upperByte << 8) + lowerByte;
-            float temp = (float)(t/ 100.0);
-            intent.putExtra(EXTRA_DATA, Float.toString(temp));
-        } else if(UUID_HUMIDITY_MEASUREMENT.equals(characteristic.getUuid())){
-            int format = BluetoothGattCharacteristic.FORMAT_UINT16;
-            final int humidity = characteristic.getIntValue(format, 0) / 100;
-            Log.d(TAG, String.format("Received Humidity: %d", humidity));
-            intent.putExtra(EXTRA_DATA, String.valueOf(humidity));
-        }else {
+
+        if (UUID_INTENSITY.equals(characteristic.getUuid())) {
+            int INTENSITY_VALUE = DeviceControlActivity.mSeekBar.getProgress();
+            intent.putExtra(EXTRA_DATA, Float.toString(INTENSITY_VALUE));
+        } else {
             // For all other profiles, writes the data formatted in HEX.
             final byte[] data = characteristic.getValue();
             if (data != null && data.length > 0) {
@@ -283,6 +271,13 @@ public class BluetoothLeService extends Service {
         }
         mBluetoothGatt.readCharacteristic(characteristic);
     }
+    public void writeCharacteristic(BluetoothGattCharacteristic characteristic) {
+        if (mBluetoothAdapter == null || mBluetoothGatt == null) {
+            Log.w(TAG, "BluetoothAdapter not initialized");
+            return;
+        }
+        mBluetoothGatt.writeCharacteristic(characteristic);
+    }
 
     /**
      * Enables or disables notification on a give characteristic.
@@ -290,7 +285,7 @@ public class BluetoothLeService extends Service {
      * @param characteristic Characteristic to act on.
      * @param enabled If true, enable notification.  False otherwise.
      */
-    public void setCharacteristicNotification(BluetoothGattCharacteristic characteristic,
+    /*public void setCharacteristicNotification(BluetoothGattCharacteristic characteristic,
                                               boolean enabled) {
         if (mBluetoothAdapter == null || mBluetoothGatt == null) {
             Log.w(TAG, "BluetoothAdapter not initialized");
@@ -307,6 +302,7 @@ public class BluetoothLeService extends Service {
             mBluetoothGatt.writeDescriptor(descriptor);
         }
     }
+    */
 
     /**
      * Retrieves a list of supported GATT services on the connected device. This should be

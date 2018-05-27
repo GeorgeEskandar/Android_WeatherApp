@@ -22,6 +22,8 @@ public final class R {
     public static final int menu_refresh=0x7f020007;
     public static final int menu_scan=0x7f020008;
     public static final int menu_stop=0x7f020009;
+    public static final int seekBar=0x7f02000a;
+    public static final int textViewSeek=0x7f02000b;
   }
   public static final class layout {
     public static final int actionbar_indeterminate_progress=0x7f030000;

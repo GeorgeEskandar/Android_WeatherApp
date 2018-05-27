@@ -24,16 +24,13 @@ import java.util.HashMap;
 public class SampleGattAttributes {
     private static HashMap<String, String> attributes = new HashMap();
     //Characteristic UUID
-    public static String TEMPERATURE_MEASUREMENT = "00002a1c-0000-1000-8000-00805f9b34fb";
-    public static String HUMIDITY_MEASUREMENT = "00002a6f-0000-1000-8000-00805f9b34fb";
-    public static String CLIENT_CHARACTERISTIC_CONFIG = "00002902-0000-1000-8000-00805f9b34fb";
+    public static String INTENSITY = "10000001-0000-0000-fdfd-fdfdfdfdfdfd";
 
     static {
         // Sample Services.
-        attributes.put("00000002-0000-0000-fdfd-fdfdfdfdfdfd", "Weather Service");
+        attributes.put("00000001-0000-0000-fdfd-fdfdfdfdfdfd", "Fan Control Service");
         // Sample Characteristics.
-        attributes.put(TEMPERATURE_MEASUREMENT, "Temperature Measurement");
-        attributes.put(HUMIDITY_MEASUREMENT, "Humidity Measurement");
+        attributes.put(INTENSITY, "Intensity");
     }
 
     public static String lookup(String uuid, String defaultName) {

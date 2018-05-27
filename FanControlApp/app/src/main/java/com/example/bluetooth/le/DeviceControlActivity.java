@@ -32,8 +32,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.SeekBar;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +57,8 @@ public class DeviceControlActivity extends Activity {
     private TextView mDataField;
     private String mDeviceName;
     private String mDeviceAddress;
+    public static SeekBar mSeekBar;
+    private TextView mSeekBarValue;
     private ExpandableListView mGattServicesList;
     private BluetoothLeService mBluetoothLeService;
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
@@ -126,20 +130,38 @@ public class DeviceControlActivity extends Activity {
                         final BluetoothGattCharacteristic characteristic =
                                 mGattCharacteristics.get(groupPosition).get(childPosition);
                         final int charaProp = characteristic.getProperties();
-                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
-                            // If there is an active notification on a characteristic, clear
-                            // it first so it doesn't update the data field on the user interface.
-                            if (mNotifyCharacteristic != null) {
-                                mBluetoothLeService.setCharacteristicNotification(
-                                        mNotifyCharacteristic, false);
-                                mNotifyCharacteristic = null;
-                            }
-                            mBluetoothLeService.readCharacteristic(characteristic);
-                        }
-                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
-                            mNotifyCharacteristic = characteristic;
-                            mBluetoothLeService.setCharacteristicNotification(
-                                    characteristic, true);
+                        if ((charaProp | BluetoothGattCharacteristic.PROPERTY_WRITE) > 0) {
+                            mSeekBar.setVisibility(View.VISIBLE);
+                            mSeekBarValue.setVisibility(View.VISIBLE);
+                            int INTENSITY_VALUE = 0;
+                            mSeekBar.setOnSeekBarChangeListener(
+                                    new SeekBar.OnSeekBarChangeListener() {
+                                        int progress_value;
+                                        @Override
+                                        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                                            progress_value = i;
+                                            characteristic.setValue(progress_value, BluetoothGattCharacteristic.FORMAT_UINT16,0);
+                                            mBluetoothLeService.writeCharacteristic(characteristic);
+                                            mSeekBarValue.setText("Intensity : " + progress_value + " / " +mSeekBar.getMax());
+
+                                        }
+
+                                        @Override
+                                        public void onStartTrackingTouch(SeekBar seekBar) {
+                                            mSeekBarValue.setText("Intensity : " + progress_value + " / " +mSeekBar.getMax());
+                                        }
+
+                                        @Override
+                                        public void onStopTrackingTouch(SeekBar seekBar) {
+                                            characteristic.setValue(progress_value, BluetoothGattCharacteristic.FORMAT_UINT16,0);
+                                            mBluetoothLeService.writeCharacteristic(characteristic);
+                                            mSeekBarValue.setText("Intensity : " + progress_value + " / " +mSeekBar.getMax());
+
+                                        }
+                                    }
+                            );
+                            characteristic.setValue(INTENSITY_VALUE, BluetoothGattCharacteristic.FORMAT_UINT16,0);
+                            mBluetoothLeService.writeCharacteristic(characteristic);
                         }
                         return true;
                     }
@@ -167,6 +189,8 @@ public class DeviceControlActivity extends Activity {
         mGattServicesList.setOnChildClickListener(servicesListClickListner);
         mConnectionState = (TextView) findViewById(R.id.connection_state);
         mDataField = (TextView) findViewById(R.id.data_value);
+        mSeekBar = (SeekBar) findViewById(R.id.seekBar);
+        mSeekBarValue = (TextView)findViewById(R.id.textViewSeek);
 
         getActionBar().setTitle(mDeviceName);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -218,6 +242,8 @@ public class DeviceControlActivity extends Activity {
                 return true;
             case R.id.menu_disconnect:
                 mBluetoothLeService.disconnect();
+                mSeekBar.setVisibility(View.INVISIBLE);
+                mSeekBarValue.setVisibility(View.INVISIBLE);
                 return true;
             case android.R.id.home:
                 onBackPressed();

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\FanControlApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\FanControlApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "16,17,22,23,25,18,19,20,32,33,34,35,21,24,28,27,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
