@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\layout\\listitem_device.xml"
     },
     {
+        "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_forbidden.png.flat",
+        "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-hdpi\\forbidden.png"
+    },
+    {
         "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_gatt_services.xml.flat",
         "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\menu\\gatt_services.xml"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
         "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_forbidden.png.flat",
+        "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-xhdpi\\forbidden.png"
     },
     {
         "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
@@ -32,7 +40,15 @@
         "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_forbidden.png.flat",
+        "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-mdpi\\forbidden.png"
+    },
+    {
         "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_forbidden.png.flat",
+        "source": "C:\\Users\\Ismail\\Desktop\\Courses\\MobileComputing\\Mobile Computing Lab\\Mobile-Computing\\FanControlApp\\app\\src\\main\\res\\drawable-xxhdpi\\forbidden.png"
     }
 ]

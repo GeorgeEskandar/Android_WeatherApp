@@ -54,7 +54,7 @@ ADDED from C:\Users\Ismail\Desktop\Courses\MobileComputing\Mobile Computing Lab\
 	android:label
 		ADDED from C:\Users\Ismail\Desktop\Courses\MobileComputing\Mobile Computing Lab\Mobile-Computing\FanControlApp\app\src\main\AndroidManifest.xml:32:18-50
 	android:icon
-		ADDED from C:\Users\Ismail\Desktop\Courses\MobileComputing\Mobile Computing Lab\Mobile-Computing\FanControlApp\app\src\main\AndroidManifest.xml:33:18-54
+		ADDED from C:\Users\Ismail\Desktop\Courses\MobileComputing\Mobile Computing Lab\Mobile-Computing\FanControlApp\app\src\main\AndroidManifest.xml:33:18-52
 	android:theme
 		ADDED from C:\Users\Ismail\Desktop\Courses\MobileComputing\Mobile Computing Lab\Mobile-Computing\FanControlApp\app\src\main\AndroidManifest.xml:34:18-65
 activity#com.example.bluetooth.le.DeviceScanActivity

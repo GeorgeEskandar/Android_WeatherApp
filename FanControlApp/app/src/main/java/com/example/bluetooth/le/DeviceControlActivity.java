@@ -133,7 +133,7 @@ public class DeviceControlActivity extends Activity {
                         if ((charaProp | BluetoothGattCharacteristic.PROPERTY_WRITE) > 0) {
                             mSeekBar.setVisibility(View.VISIBLE);
                             mSeekBarValue.setVisibility(View.VISIBLE);
-                            int INTENSITY_VALUE = 0;
+                            int INTENSITY_VALUE = 50000;
                             mSeekBar.setOnSeekBarChangeListener(
                                     new SeekBar.OnSeekBarChangeListener() {
                                         int progress_value;
@@ -160,6 +160,7 @@ public class DeviceControlActivity extends Activity {
                                         }
                                     }
                             );
+
                             characteristic.setValue(INTENSITY_VALUE, BluetoothGattCharacteristic.FORMAT_UINT16,0);
                             mBluetoothLeService.writeCharacteristic(characteristic);
                         }
@@ -243,7 +244,7 @@ public class DeviceControlActivity extends Activity {
             case R.id.menu_disconnect:
                 mBluetoothLeService.disconnect();
                 mSeekBar.setVisibility(View.INVISIBLE);
-                mSeekBarValue.setVisibility(View.INVISIBLE);
+                //mSeekBarValue.setVisibility(View.INVISIBLE);
                 return true;
             case android.R.id.home:
                 onBackPressed();
